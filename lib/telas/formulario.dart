@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:helloworldflutter/constantes/cores.dart';
 import 'package:helloworldflutter/constantes/fontes.dart';
+import 'package:helloworldflutter/core/botao.dart';
+import 'package:helloworldflutter/core/campo.dart';
+import 'package:helloworldflutter/core/rotulo.dart';
 
 class FormularioTED extends StatelessWidget {
   const FormularioTED({super.key});
@@ -17,14 +20,10 @@ class FormularioTED extends StatelessWidget {
             const Padding(
               padding: EdgeInsets.only(bottom: 50),
             ),
-            Text(
+            Rotulo(
               "Dados da Ted",
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontFamily: Fonte.inter.fontFamily,
-                fontSize: 24,
-                fontWeight: FontWeight.w700,
-              ),
+              bold: true,
+              fontSize: 24,
             ),
           ],
         ),
@@ -38,59 +37,41 @@ class FormularioTED extends StatelessWidget {
         child: ListView(
           primary: false,
           padding: const EdgeInsets.symmetric(horizontal: 35, vertical: 12),
-          children: const <Widget>[
-            TextField(
-              decoration: InputDecoration(
-                hintText: "Código do banco",
-                border: OutlineInputBorder(),
-              ),
+          children: <Widget>[
+            Campo(
+              nome: "Código do banco",
             ),
-            Padding(
+            const Padding(
               padding: EdgeInsets.symmetric(vertical: 6),
             ),
-            TextField(
-              decoration: InputDecoration(
-                hintText: "Agência",
-                border: OutlineInputBorder(),
-              ),
+            Campo(
+              nome: "Agência",
             ),
-            Padding(
+            const Padding(
               padding: EdgeInsets.symmetric(vertical: 6),
             ),
-            TextField(
-              decoration: InputDecoration(
-                hintText: "Conta",
-                border: OutlineInputBorder(),
-              ),
+            Campo(
+              nome: "Conta",
             ),
-            Padding(
+            const Padding(
               padding: EdgeInsets.symmetric(vertical: 6),
             ),
-            TextField(
-              decoration: InputDecoration(
-                hintText: "CPF",
-                border: OutlineInputBorder(),
-              ),
+            Campo(
+              nome: "CPF",
             ),
-            Padding(
+            const Padding(
               padding: EdgeInsets.symmetric(vertical: 6),
             ),
-            TextField(
-              decoration: InputDecoration(
-                hintText: "Valor",
-                border: OutlineInputBorder(),
-              ),
+            Campo(
+              nome: "Valor",
             ),
-            Padding(
+            const Padding(
               padding: EdgeInsets.symmetric(vertical: 6),
             ),
-            TextField(
-              decoration: InputDecoration(
-                hintText: "Data",
-                border: OutlineInputBorder(),
-              ),
+            Campo(
+              nome: "Data",
             ),
-            Padding(
+            const Padding(
               padding: EdgeInsets.symmetric(vertical: 6),
             ),
           ],
@@ -102,36 +83,14 @@ class FormularioTED extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            ElevatedButton(
-              onPressed: () => {Navigator.pop(context)},
-              style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all<Color>(
-                    const Color(Cores.botaoVerde)),
-                textStyle: MaterialStateProperty.all<TextStyle>(
-                  const TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-                fixedSize:
-                    MaterialStateProperty.all<Size>(const Size.fromHeight(48)),
-              ),
-              child: const Text("Revisar"),
+            Botao(
+              nome: "Revisar",
             ),
             const Padding(padding: EdgeInsets.symmetric(vertical: 4.5)),
-            ElevatedButton(
-              onPressed: () => {Navigator.pop(context)},
-              style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all<Color>(
-                    const Color(Cores.botaoCinza)),
-                textStyle: MaterialStateProperty.all<TextStyle>(const TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w600,
-                )),
-                fixedSize:
-                    MaterialStateProperty.all<Size>(const Size.fromHeight(48)),
-              ),
-              child: const Text("Voltar"),
+            Botao(
+              onPressed: () => Navigator.pop(context),
+              cor: Cores.botaoCinza,
+              nome: "Voltar",
             ),
           ],
         ),

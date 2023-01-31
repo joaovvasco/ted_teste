@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:helloworldflutter/constantes/cores.dart';
 import 'package:helloworldflutter/constantes/fontes.dart';
+import 'package:helloworldflutter/core/botao.dart';
+import 'package:helloworldflutter/core/rotulo.dart';
 import 'package:helloworldflutter/telas/formulario.dart';
+import 'package:helloworldflutter/telas/teste.dart';
 
 class TelaInicial extends StatelessWidget {
   const TelaInicial({super.key});
@@ -21,28 +24,23 @@ class TelaInicial extends StatelessWidget {
                         color: Color(0xFFDD6B20), shape: BoxShape.circle),
                     padding: const EdgeInsets.all(8.33),
                     margin: const EdgeInsets.only(right: 8.67),
-                    child: Text(
+                    child: Rotulo(
                       "!",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 14,
-                        fontFamily: Fonte.inter.fontFamily,
-                      ),
+                      bold: true,
+                      cor: 0xFFFFFFFF,
+                      fontSize: 14,
                     ),
                   ),
-                  const Text(
+                  Rotulo(
                     "Ops!",
-                    style: TextStyle(
-                      fontWeight: FontWeight.w700,
-                      fontSize: 16,
-                    ),
+                    bold: true,
                   ),
                 ],
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
-                  Text("Você não tem TED's agendados"),
+                children: [
+                  Rotulo("Você não tem TED's agendados"),
                 ],
               )
             ],
@@ -54,22 +52,15 @@ class TelaInicial extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              ElevatedButton(
-                onPressed: () => {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const FormularioTED(),
-                    ),
-                  ),
-                },
-                style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all<Color>(
-                    const Color(Cores.botaoVerde),
+              Botao(
+                nome: "Agendar TED",
+                onPressed: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const FormularioTED(),
                   ),
                 ),
-                child: const Text("Agenda TED"),
-              ),
+              )
             ],
           ),
         ));
