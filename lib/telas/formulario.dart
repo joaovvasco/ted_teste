@@ -1,12 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:helloworldflutter/constantes/cores.dart';
-import 'package:helloworldflutter/constantes/fontes.dart';
 import 'package:helloworldflutter/core/botao.dart';
 import 'package:helloworldflutter/core/campo.dart';
 import 'package:helloworldflutter/core/rotulo.dart';
+import 'package:helloworldflutter/vm/ted.dart';
 
-class FormularioTED extends StatelessWidget {
+class FormularioTED extends StatefulWidget {
   const FormularioTED({super.key});
+
+  @override
+  State<StatefulWidget> createState() => _FormularioTEDState();
+}
+
+class _FormularioTEDState extends State<FormularioTED> {
+  final TedVM vm = TedVM();
 
   @override
   Widget build(BuildContext context) {
@@ -40,36 +47,48 @@ class FormularioTED extends StatelessWidget {
           children: <Widget>[
             Campo(
               nome: "Código do banco",
+              keyboardType: TextInputType.number,
+              onChanged: ((value) => vm.codigoBanco = value),
             ),
             const Padding(
               padding: EdgeInsets.symmetric(vertical: 6),
             ),
             Campo(
               nome: "Agência",
+              keyboardType: TextInputType.number,
+              onChanged: ((value) => vm.agencia = value),
             ),
             const Padding(
               padding: EdgeInsets.symmetric(vertical: 6),
             ),
             Campo(
               nome: "Conta",
+              keyboardType: TextInputType.number,
+              onChanged: ((value) => vm.conta = value),
             ),
             const Padding(
               padding: EdgeInsets.symmetric(vertical: 6),
             ),
-            Campo(
+            CampoMascarado(
               nome: "CPF",
+              mascara: "000.000.000-00",
+              keyboardType: TextInputType.number,
+              onChanged: (value) => vm.cpf = value,
             ),
             const Padding(
               padding: EdgeInsets.symmetric(vertical: 6),
             ),
             Campo(
               nome: "Valor",
+              keyboardType: TextInputType.number,
+              onChanged: (value) => vm.valor = double.parse(value),
             ),
             const Padding(
               padding: EdgeInsets.symmetric(vertical: 6),
             ),
-            Campo(
+            CampoData(
               nome: "Data",
+              onChanged: (value) => vm.data = DateTime.parse(value),
             ),
             const Padding(
               padding: EdgeInsets.symmetric(vertical: 6),
